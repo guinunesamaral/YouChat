@@ -12,7 +12,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import StackNavigator from './components/StackNavigator/StackNavigator';
-import store from './Store';
+import store from './redux/Store';
 
 const App = () => {
   return (

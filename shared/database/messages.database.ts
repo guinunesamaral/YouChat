@@ -4,7 +4,7 @@ export const messages = [
   {
     id: '1',
     text: 'Hello there',
-    image: new Blob(),
+    image: '',
     author: users[0],
     dispatchTimestamp: new Date(),
     lastEditionTimestamp: new Date(),

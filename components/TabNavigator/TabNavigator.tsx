@@ -8,7 +8,7 @@ import AddContact from '../AddContact/AddContact';
 
 const Tab = createMaterialBottomTabNavigator();
 
-const BottomTabs = () => {
+const TabNavigator = () => {
   const colors = useSelector((state: any) => state.colorReducer.colors);
 
   return (
@@ -65,4 +65,4 @@ const BottomTabs = () => {
   );
 };
 
-export default BottomTabs;
+export default TabNavigator;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
-import BottomTabs from '../BottomTabs/BottomTabs';
+import TabNavigator from '../TabNavigator/TabNavigator';
 import Chat from '../Chat/Chat';
 
 const Stack = createStackNavigator();
@@ -11,13 +11,19 @@ const StackNavigator = () => {
 
   return (
     <Stack.Navigator
-      initialRouteName="Chats"
+      initialRouteName="TabNavigator"
       screenOptions={{
         headerMode: 'screen',
         headerTintColor: 'white',
         headerStyle: { backgroundColor: colors.purple_1 },
       }}>
-      <Stack.Screen name="Chats" component={BottomTabs} />
+      <Stack.Screen
+        name="TabNavigator"
+        component={TabNavigator}
+        options={{
+          title: 'Chats',
+        }}
+      />
       <Stack.Screen
         name="Chat"
         component={Chat}

@@ -1,17 +1,21 @@
 import Contact from './Contact.interface';
 import Chat from './Chat.interface';
 
+type Contacts = Contact | Array<Contact>;
+type ChatList = Chat | Array<Chat>;
+
 export default interface User {
-  id: string;
+  readonly id: string;
   name: string;
   email: string;
   photo: Blob;
-  contacts: Array<Contact>;
-  chatList: Array<Chat>;
+  contacts: Contacts;
+  chatList: ChatList;
 
   addContact: (email: string) => Contact;
   removeContact: (email: string) => void;
   makeChat: (contact: User) => Chat;
+  fetchChats: () => Array<Chat>;
   deleteChat: (chat: Chat) => void;
   deleteAllChats: () => void;
   changeName: (newName: string) => User;
