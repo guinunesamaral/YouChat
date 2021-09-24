@@ -1,8 +1,10 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useSelector } from 'react-redux';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import TabNavigator from '../TabNavigator/TabNavigator';
-import Chat from '../Chat/Chat';
+import Chat from './Chat';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +31,16 @@ const StackNavigator = () => {
         component={Chat}
         options={({ route }: { route: any }) => ({
           title: route.params.title,
+          messageHistory: route.params.messageHistory,
+          headerRight: () => (
+            <TouchableOpacity>
+              <MaterialCommunityIcons
+                name="dots-vertical"
+                color={colors.white_1}
+                size={26}
+              />
+            </TouchableOpacity>
+          ),
         })}
       />
     </Stack.Navigator>

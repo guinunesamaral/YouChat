@@ -1,15 +1,41 @@
 import React from 'react';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSelector } from 'react-redux';
-import ChatList from '../ChatList/ChatList';
-import Profile from '../Profile/Profile';
-import AddContact from '../AddContact/AddContact';
+import ChatList from './ChatList';
+import Profile from './Profile';
+import AddContact from './AddContact';
+
+const getHeaderTitle = (route: any) => {
+  const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';
+
+  switch (routeName) {
+    case 'ChatList':
+      return 'Chat List';
+    case 'Profile':
+      return 'Profile';
+    case 'AddContact':
+      return 'Add Contact';
+    case 'SearchChat':
+      return 'Search Chat';
+  }
+};
 
 const Tab = createMaterialBottomTabNavigator();
 
-const TabNavigator = () => {
+const TabNavigator = ({
+  navigation,
+  route,
+}: {
+  navigation: any;
+  route: any;
+}) => {
   const colors = useSelector((state: any) => state.colorReducer.colors);
+
+  React.useLayoutEffect(() => {
+    navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+  }, [navigation, route]);
 
   return (
     <Tab.Navigator
@@ -31,6 +57,7 @@ const TabNavigator = () => {
         name="Profile"
         component={Profile}
         options={{
+          title: 'Profile',
           tabBarLabel: 'Profile',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons
@@ -42,7 +69,7 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Add Contact"
+        name="AddContact"
         component={AddContact}
         options={{
           tabBarLabel: 'Add Contact',
@@ -52,7 +79,7 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Search Chat"
+        name="SearchChat"
         component={ChatList}
         options={{
           tabBarLabel: 'Search Chat',

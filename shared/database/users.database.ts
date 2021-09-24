@@ -1,10 +1,12 @@
-export const users = [
+import { UserModel } from '../interfaces/User.interface';
+
+export const users: UserModel[] = [
   {
     id: '1',
     name: 'Olívia Santos',
     email: 'olivia@gmail.com',
     photo: require('../../assets/users/olivia.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -12,7 +14,7 @@ export const users = [
     name: 'Marcos Antonio',
     email: 'marcos@gmail.com',
     photo: require('../../assets/users/marcos.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -20,7 +22,7 @@ export const users = [
     name: 'João Marcos',
     email: 'joao@gmail.com',
     photo: require('../../assets/users/joao.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -28,7 +30,7 @@ export const users = [
     name: 'Maria',
     email: 'maria@gmail.com',
     photo: require('../../assets/users/maria.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -36,7 +38,7 @@ export const users = [
     name: 'Jéssica',
     email: 'jessica@gmail.com',
     photo: require('../../assets/users/jessica.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -44,7 +46,7 @@ export const users = [
     name: 'Roberto Carlos',
     email: 'roberto@gmail.com',
     photo: require('../../assets/users/roberto.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -52,7 +54,7 @@ export const users = [
     name: 'Pedro Oliveira',
     email: 'pedro@gmail.com',
     photo: require('../../assets/users/pedro.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -60,7 +62,7 @@ export const users = [
     name: 'Raimundo Pereira',
     email: 'raimundo@gmail.com',
     photo: require('../../assets/users/raimundo.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -68,7 +70,7 @@ export const users = [
     name: 'Silvana Silva',
     email: 'silvana@gmail.com',
     photo: require('../../assets/users/silvana.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -76,7 +78,7 @@ export const users = [
     name: 'Vitoria Oliveira',
     email: 'vitoria@gmail.com',
     photo: require('../../assets/users/vitoria.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -84,7 +86,7 @@ export const users = [
     name: 'Marina Santos',
     email: 'marina@gmail.com',
     photo: require('../../assets/users/marina.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -92,7 +94,7 @@ export const users = [
     name: 'Mario Augusto',
     email: 'mario@gmail.com',
     photo: require('../../assets/users/carlos.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -100,7 +102,7 @@ export const users = [
     name: 'Alex Moraes',
     email: 'alex@gmail.com',
     photo: require('../../assets/users/alex.jpg'),
-    contacts: [],
+    contacts: () => [],
     chatList: [],
   },
   {
@@ -108,7 +110,7 @@ export const users = [
     name: 'Paulo',
     email: 'paulo@gmail.com',
     photo: require('../../assets/users/paulo.jpg'),
-    contacts: [],
+    contacts: () => users.filter(user => user.name !== 'Paulo'),
     chatList: [],
   },
 ];
