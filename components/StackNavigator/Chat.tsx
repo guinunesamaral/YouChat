@@ -19,7 +19,14 @@ const Chat: React.FunctionComponent<ChatProps> = props => {
     <View style={styles.chat}>
       <ScrollView>
         {messageHistory.map((message: MessageInterface) => {
-          return <Message {...message} title={title} navigation={navigation} />;
+          return (
+            <Message
+              key={message.id}
+              {...message}
+              title={title}
+              navigation={navigation}
+            />
+          );
         })}
       </ScrollView>
       <ChatKeyboard />

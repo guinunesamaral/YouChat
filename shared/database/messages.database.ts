@@ -1,94 +1,30 @@
 import Message from '../interfaces/Message.interface';
-import { users } from './users.database';
-import { chats } from './chats.database';
+import { olivia } from './messages/olivia';
+import { marcos } from './messages/marcos';
+import { joao } from './messages/joao';
+import { maria } from './messages/maria';
+import { jessica } from './messages/jessica';
+import { roberto } from './messages/roberto';
+import { pedro } from './messages/pedro';
+import { raimundo } from './messages/raimundo';
+import { silvana } from './messages/silvana';
+import { vitoria } from './messages/vitoria';
+import { marina } from './messages/marina';
+import { mario } from './messages/mario';
+import { alex } from './messages/alex';
 
 export const messages: Message[] = [
-  {
-    id: '1',
-    text: 'It is a long established fact that a reader will be distracted by the readable content of a',
-    image: undefined,
-    isStarry: false,
-    wasReceived: false,
-    dispatchTimestamp: new Date(),
-    lastEditionTimestamp: undefined,
-    author: users[13],
-    chat: chats[0],
-  },
-  {
-    id: '2',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dol',
-    image: undefined,
-    isStarry: false,
-    wasReceived: false,
-    dispatchTimestamp: new Date(),
-    lastEditionTimestamp: undefined,
-    author: users[0],
-    chat: chats[0],
-  },
-  {
-    id: '3',
-    text: 'Lorem ipsum dolor sit amet',
-    image: undefined,
-    isStarry: false,
-    wasReceived: false,
-    dispatchTimestamp: new Date(),
-    lastEditionTimestamp: undefined,
-    author: users[0],
-    chat: chats[0],
-  },
-  {
-    id: '4',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    image: undefined,
-    isStarry: false,
-    wasReceived: false,
-    dispatchTimestamp: new Date(),
-    lastEditionTimestamp: undefined,
-    author: users[13],
-    chat: chats[0],
-  },
-  {
-    id: '5',
-    text: 'It is a long established fact that a reader will be distracted by the readable content of a',
-    image: undefined,
-    isStarry: false,
-    wasReceived: false,
-    dispatchTimestamp: new Date(),
-    lastEditionTimestamp: undefined,
-    author: users[13],
-    chat: chats[1],
-  },
-  {
-    id: '6',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dol',
-    image: undefined,
-    isStarry: false,
-    wasReceived: false,
-    dispatchTimestamp: new Date(),
-    lastEditionTimestamp: undefined,
-    author: users[13],
-    chat: chats[1],
-  },
-  {
-    id: '7',
-    text: 'Lorem ipsum dolor sit amet',
-    image: undefined,
-    isStarry: false,
-    wasReceived: false,
-    dispatchTimestamp: new Date(),
-    lastEditionTimestamp: undefined,
-    author: users[13],
-    chat: chats[1],
-  },
-  {
-    id: '8',
-    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    image: undefined,
-    isStarry: false,
-    wasReceived: false,
-    dispatchTimestamp: new Date(),
-    lastEditionTimestamp: undefined,
-    author: users[13],
-    chat: chats[1],
-  },
+  ...olivia,
+  ...marcos,
+  ...joao,
+  ...maria,
+  ...jessica,
+  ...roberto,
+  ...pedro,
+  ...raimundo,
+  ...silvana,
+  ...vitoria,
+  ...marina,
+  ...mario,
+  ...alex,
 ];

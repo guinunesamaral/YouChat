@@ -47,6 +47,8 @@ const Message: React.FunctionComponent<MessageProps> = props => {
   const colors = useSelector((state: any) => state.colorReducer.colors);
   const appUser = useSelector((state: any) => state.userReducer.user);
 
+  console.log('appUser', appUser.id, author.id);
+
   return (
     <View>
       <TouchableOpacity
@@ -55,7 +57,7 @@ const Message: React.FunctionComponent<MessageProps> = props => {
             ? {
                 ...styles.message,
                 ...styles.sentMessage,
-                backgroundColor: colors.pink_1,
+                backgroundColor: colors.purple_2,
               }
             : {
                 ...styles.message,
@@ -69,7 +71,7 @@ const Message: React.FunctionComponent<MessageProps> = props => {
               ? {
                   ...styles.polygon,
                   ...styles.polygonRight,
-                  borderTopColor: colors.pink_1,
+                  borderTopColor: colors.purple_2,
                 }
               : {
                   ...styles.polygon,

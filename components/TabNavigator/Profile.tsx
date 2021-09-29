@@ -1,13 +1,13 @@
 import React from 'react';
 import { Image, SafeAreaView, StyleSheet, TextInput, View } from 'react-native';
-import { users as userDatabase } from '../../shared/database/users.database';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
-  const user = userDatabase[0];
+  const appUser = useSelector((state: any) => state.userReducer.user);
 
   return (
     <View style={styles.profile}>
-      <Image style={styles.userPhoto} source={user.photo} />
+      <Image style={styles.userPhoto} source={appUser.photo} />
       <SafeAreaView style={styles.inputContainer}>
         <TextInput style={styles.input} placeholder="Name" />
         <TextInput style={styles.input} placeholder="Email" />
