@@ -9,18 +9,19 @@ import {
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import TextTicker from 'react-native-text-ticker';
-import MessageInterface from '../../shared/interfaces/Message.interface';
+import MessageInterface from '../../../shared/interfaces/Message.interface';
 
 interface ChatLabelProps {
-  contactName: string;
-  contactPhoto: ImageProps;
+  chatId: string;
+  friendName: string;
+  friendPhoto: ImageProps;
   messageHistory: MessageInterface[];
   navigation: any;
 }
 
 const ChatLabel: React.FunctionComponent<ChatLabelProps> = props => {
-  const { contactName, contactPhoto, messageHistory, navigation } = props;
-  const colors = useSelector((state: any) => state.colorReducer.colors);
+  const { chatId, friendName, messageHistory, navigation } = props;
+  const colors = useSelector((state: any) => state.colorReducer);
 
   return (
     <TouchableOpacity
@@ -30,22 +31,29 @@ const ChatLabel: React.FunctionComponent<ChatLabelProps> = props => {
       }}
       onPress={() =>
         navigation.navigate('Chat', {
-          title: contactName,
+          title: friendName,
+          chatId: chatId,
           messageHistory: messageHistory,
         })
       }>
       <View>
-        <Image style={styles.photo} source={contactPhoto} />
+        <Image
+          style={styles.photo}
+          source={{
+            uri: 'https://reactjs.org/logo-og.png',
+          }}
+        />
       </View>
       <View>
-        <Text style={styles.contactName}>{contactName}</Text>
+        <Text style={styles.friendName}>{friendName}</Text>
         <TextTicker
           duration={8000}
           loop
           scroll
           repeatSpacer={20}
           marqueeDelay={0}>
-          {messageHistory.length >= 1 &&
+          {messageHistory &&
+            messageHistory.length >= 1 &&
             messageHistory[messageHistory.length - 1].text}
         </TextTicker>
       </View>
@@ -67,7 +75,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     borderRadius: 32,
   },
-  contactName: {
+  friendName: {
     fontSize: 17,
     fontWeight: 'bold',
   },

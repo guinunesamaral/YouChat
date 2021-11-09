@@ -1,9 +1,9 @@
 import { ImageProps } from 'react-native';
 
-export default interface Chat {
+export default interface Friendship {
   readonly id: string;
   readonly friend_id: string;
   readonly friend_name: string;
   readonly friend_email: string;
-  readonly friend_photo: Blob | ImageProps;
+  readonly friend_photo: ImageProps | Blob;
 }

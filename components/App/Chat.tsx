@@ -6,30 +6,26 @@ import Message from './Message';
 import ChatKeyboard from './ChatKeyboard';
 
 interface ChatProps {
-  title: string;
   route: any;
   navigation: any;
 }
 
 const Chat: React.FunctionComponent<ChatProps> = props => {
-  const { title, route, navigation } = props;
+  const { route, navigation } = props;
+  const chatId = route.params.chatId;
   const messageHistory = route.params.messageHistory;
 
   return (
     <View style={styles.chat}>
       <ScrollView>
-        {messageHistory.map((message: MessageInterface) => {
-          return (
-            <Message
-              key={message.id}
-              {...message}
-              title={title}
-              navigation={navigation}
-            />
-          );
-        })}
+        {messageHistory &&
+          messageHistory.map((message: MessageInterface) => {
+            return (
+              <Message key={message.id} {...message} navigation={navigation} />
+            );
+          })}
       </ScrollView>
-      <ChatKeyboard />
+      <ChatKeyboard chatId={chatId} />
     </View>
   );
 };

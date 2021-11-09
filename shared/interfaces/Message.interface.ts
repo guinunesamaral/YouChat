@@ -1,14 +1,13 @@
-import { ChatModel } from './Chat.interface';
-import { UserModel } from './User.interface';
+import { ImageProps } from 'react-native';
 
 export default interface Message {
   readonly id: string;
   text?: string;
-  image?: Blob;
-  isStarry: boolean;
-  wasReceived: boolean;
+  image?: Blob | ImageProps;
+  isStarry: number;
+  wasReceived: number;
   dispatchTimestamp: Date;
   lastEditionTimestamp?: Date;
-  author: UserModel;
-  chat: ChatModel;
+  readonly author_id: string;
+  readonly chat_id: string;
 }

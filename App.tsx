@@ -10,16 +10,13 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
-import { NavigationContainer } from '@react-navigation/native';
-import StackNavigator from './components/StackNavigator/StackNavigator';
+import Navigation from './components/Navigation';
 import store from './redux/Store';
 
 const App = () => {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <StackNavigator />
-      </NavigationContainer>
+      <Navigation />
     </Provider>
   );
 };

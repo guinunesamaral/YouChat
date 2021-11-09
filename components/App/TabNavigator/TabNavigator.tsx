@@ -5,49 +5,48 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { useSelector } from 'react-redux';
 import ChatList from './ChatList';
 import Profile from './Profile';
-import AddContact from './AddContact';
+import FriendList from './FriendList';
 
 const getHeaderTitle = (route: any) => {
   const routeName = getFocusedRouteNameFromRoute(route) ?? 'Feed';
 
   switch (routeName) {
-    case 'ChatList':
-      return 'Chat List';
+    case 'Chats':
+      return 'Chats';
     case 'Profile':
       return 'Profile';
-    case 'AddContact':
-      return 'Add Contact';
+    case 'Friendships':
+      return 'Friendships';
     case 'SearchChat':
       return 'Search Chat';
   }
 };
 
-const Tab = createMaterialBottomTabNavigator();
-
-const TabNavigator = ({
-  navigation,
-  route,
-}: {
+interface TabNavigatorProps {
   navigation: any;
   route: any;
-}) => {
-  const colors = useSelector((state: any) => state.colorReducer.colors);
+}
+
+const Tab = createMaterialBottomTabNavigator();
+
+const TabNavigator: React.FunctionComponent<TabNavigatorProps> = props => {
+  const colors = useSelector((state: any) => state.colorReducer);
 
   React.useLayoutEffect(() => {
-    navigation.setOptions({ headerTitle: getHeaderTitle(route) });
-  }, [navigation, route]);
+    props.navigation.setOptions({ headerTitle: getHeaderTitle(props.route) });
+  }, [props.navigation, props.route]);
 
   return (
     <Tab.Navigator
-      initialRouteName="ChatList"
+      initialRouteName="Chats"
       activeColor="#f0edf6"
       inactiveColor="#3e2465"
       barStyle={{ backgroundColor: colors.purple_1 }}>
       <Tab.Screen
-        name="ChatList"
+        name="Chats"
         component={ChatList}
         options={{
-          tabBarLabel: 'Chat List',
+          tabBarLabel: 'Chats',
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="forum" color={color} size={26} />
           ),
@@ -69,12 +68,16 @@ const TabNavigator = ({
         }}
       />
       <Tab.Screen
-        name="AddContact"
-        component={AddContact}
+        name="Friendships"
+        component={FriendList}
         options={{
-          tabBarLabel: 'Add Contact',
+          tabBarLabel: 'Friendships',
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="plus-box" color={color} size={26} />
+            <MaterialCommunityIcons
+              name="account-group"
+              color={color}
+              size={26}
+            />
           ),
         }}
       />

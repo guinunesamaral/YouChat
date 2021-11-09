@@ -9,9 +9,11 @@ import {
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useSelector } from 'react-redux';
 
-const ChatKeyboard = () => {
-  const colors = useSelector((state: any) => state.colorReducer.colors);
+const ChatKeyboard = ({ chatId }: { chatId: string }) => {
+  const user = useSelector((state: any) => state.userReducer);
+  const colors = useSelector((state: any) => state.colorReducer);
   const [keyboardStatus, setKeyboardStatus] = useState('hidden');
+  const [text, setText] = useState('');
 
   useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
@@ -27,6 +29,30 @@ const ChatKeyboard = () => {
     };
   }, []);
 
+  const sendMessage = async () => {
+    console.log(user.id, chatId);
+
+    await fetch('http://localhost:9000/message', {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        text: text,
+        image: null,
+        dispatchTimestamp: new Date(),
+        author_id: user.id,
+        chat_id: chatId,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => console.log(res))
+      .catch(err => {
+        throw err;
+      });
+  };
+
   return (
     <View style={{ ...styles.container, backgroundColor: colors.purple_1 }}>
       {keyboardStatus === 'hidden' ? (
@@ -34,12 +60,20 @@ const ChatKeyboard = () => {
           <TextInput
             style={{ ...styles.input, color: colors.white_1 }}
             placeholder="Enter message…"
+            onChangeText={t => setText(t)}
             placeholderTextColor={colors.white_1}
             onSubmitEditing={Keyboard.dismiss}
           />
-          <TouchableOpacity>
+          <TouchableOpacity style={styles.addImage}>
             <MaterialCommunityIcons
               name="paperclip"
+              color={colors.white_1}
+              size={26}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={sendMessage}>
+            <MaterialCommunityIcons
+              name="send"
               color={colors.white_1}
               size={26}
             />
@@ -55,6 +89,7 @@ const ChatKeyboard = () => {
           <TextInput
             style={{ ...styles.input, color: colors.white_1 }}
             placeholder="Enter message…"
+            onChangeText={t => setText(t)}
             placeholderTextColor={colors.white_1}
             onSubmitEditing={Keyboard.dismiss}
           />
@@ -70,9 +105,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 55,
   },
+  addImage: {
+    marginRight: 20,
+  },
   input: {
-    width: '92%',
+    width: '80%',
     padding: 10,
+    paddingLeft: 20,
     borderRadius: 0,
   },
 });
